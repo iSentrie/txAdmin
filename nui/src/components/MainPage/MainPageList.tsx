@@ -20,6 +20,7 @@ import {
   DeleteForever,
   RocketLaunch,
   AirlineStops,
+  TrackChanges
   // Stream //Spawn Weapon action
 } from "@mui/icons-material";
 import { useKeyboardNavigation } from "../../hooks/useKeyboardNavigation";
@@ -37,6 +38,7 @@ import { useServerCtxValue } from "../../state/server.state";
 import { VehicleMode, useVehicleMode } from "../../state/vehiclemode.state";
 import { useIsRedmValue } from "@nui/src/state/isRedm.state";
 import { getVehicleSpawnDialogData, vehiclePlaceholderReplacer } from "@nui/src/utils/vehicleSpawnDialogHelper";
+import { PlayerIDsMode, usePlayerIdsMode } from "../../state/playerids.state";
 
 const fadeHeight = 20;
 const listHeight = 388;
@@ -80,6 +82,7 @@ export const MainPageList: React.FC = () => {
   const [teleportMode, setTeleportMode] = useTeleportMode();
   const [vehicleMode, setVehicleMode] = useVehicleMode();
   const [healMode, setHealMode] = useHealMode();
+  const [playerIdsMode, setPlayerIdsMode] = usePlayerIdsMode();
   const serverCtx = useServerCtxValue();
   const menuVisible = useIsMenuVisibleValue();
   const isRedm = useIsRedmValue()
@@ -347,6 +350,10 @@ export const MainPageList: React.FC = () => {
     fetchNui("togglePlayerIDs");
   };
 
+  const handleToggleMapBlips = () => {
+    fetchNui("togglePlayerMapBlips");
+  };
+
   // This is here for when I am bored developing
   // const handleSpawnWeapon = () => {
   //   openDialog({
@@ -551,10 +558,31 @@ export const MainPageList: React.FC = () => {
       },
       {
         title: t("nui_menu.page_main.player_ids.title"),
-        label: t("nui_menu.page_main.player_ids.label"),
+        isMultiAction: true,
         requiredPermission: "menu.viewids",
-        icon: <Groups />,
-        onSelect: handleTogglePlayerIds,
+        initialValue: playerIdsMode,
+        actions: [
+          {
+            name: t("nui_menu.page_main.player_ids.above_head.name"),
+            label: t("nui_menu.page_main.player_ids.above_head.label"),
+            icon: <Groups />,
+            value: PlayerIDsMode.ABOVE,
+            onSelect: () => {
+              setPlayerIdsMode(PlayerIDsMode.ABOVE)
+              handleTogglePlayerIds()
+            }
+          },
+          {
+            name: t("nui_menu.page_main.player_ids.map_blips.name"),
+            label: t("nui_menu.page_main.player_ids.map_blips.label"),
+            icon: <TrackChanges />,
+            value: PlayerIDsMode.MAP,
+            onSelect: () => {
+              setPlayerIdsMode(PlayerIDsMode.MAP)
+              handleToggleMapBlips()
+            }
+          }
+        ],
       },
       // {
       //   title: "Spawn Weapon",
@@ -562,7 +590,7 @@ export const MainPageList: React.FC = () => {
       //   onSelect: handleSpawnWeapon,
       // },
     ],
-    [playerMode, teleportMode, vehicleMode, healMode, serverCtx, isRedm]
+    [playerMode, teleportMode, vehicleMode, healMode, serverCtx, isRedm, playerIdsMode]
   );
 
   return (

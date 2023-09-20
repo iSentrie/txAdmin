@@ -16,44 +16,8 @@
     "ban_messages": {
         "kick_temporary": "(%{author}) Vous avez été banni pour: \"%{reason}\". Votre bannissement expirera dans: %{expiration}.",
         "kick_permanent": "(%{author}) Vous avez été définitivement banni de ce serveur pour: \"%{reason}\".",
-        "reject": {
-            "title_permanent": "Vous avez été définitivement banni de ce serveur.",
-            "title_temporary": "Vous avez été temporairement banni de ce serveur.",
-            "label_expiration": "Votre sanction expire dans",
-            "label_date": "Date de la sanction",
-            "label_author": "Banni par",
-            "label_reason": "Raison du bannissement",
-            "label_id": "ID de sanction",
-            "note_multiple_bans": "Note : vous avez plus d'un bannissement sur votre identifiant.",
-            "note_diff_license": "Note: the ban above was applied for another <code>license</code>, which means some of your IDs/HWIDs match the ones associated with that ban."
-        }
-    },
-    "whitelist_messages": {
-        "admin_only": {
-            "mode_title": "Ce serveur est en mode <strong>Admin Only</strong> (maintenance).",
-            "insufficient_ids": "Vous n'avez pas d'identifiant <code>discord</code> ou <code>fivem</code>, et au moins un d'entre eux est requis pour valider que vous êtes un administrateur txAdmin.",
-            "deny_message": "Vos identifiants ne sont attribués à aucun administrateur txAdmin."
-        },
-        "guild_member": {
-            "mode_title": "Ce serveur est en mode <strong>Discord Member Whitelist</strong>.",
-            "insufficient_ids": "Vous n'avez pas l'identifiant <code>discord</code>, qui est nécessaire pour valider que vous avez rejoint notre serveur Discord. Please open the Discord Desktop app and try again (the Web app won't work).",
-            "deny_title": "Vous devez rejoindre notre serveur Discord pour vous connecter.",
-            "deny_message": "Veuillez rejoindre le serveur %{guildname} puis réessayer."
-        },
-        "guild_roles": {
-            "mode_title": "Ce serveur est en mode <strong>Discord Role Whitelist</strong>.",
-            "insufficient_ids": "Vous n'avez pas l'identifiant <code>discord</code>, qui est nécessaire pour valider que vous avez rejoint notre serveur Discord. Please open the Discord Desktop app and try again (the Web app won't work).",
-            "deny_notmember_title": "Vous devez rejoindre notre serveur Discord pour vous connecter.",
-            "deny_notmember_message": "Veuillez rejoindre le serveur %{guildname}, obtenez l'un des rôles requis, puis réessayez.",
-            "deny_noroles_title": "Vous n'avez pas le rôle requis pour vous connecter.",
-            "deny_noroles_message": "Pour rejoindre ce serveur, vous devez avoir au moins un des rôles requis du serveur %{guildname}."
-        },
-        "approved_license": {
-            "mode_title": "Ce serveur est en mode <strong>License Whitelist</strong>.",
-            "insufficient_ids": "Vous n'avez pas l'identifiant <code>license</code>, ce qui signifique que l'option <code>sv_lan</code> est activée. Si vous êtes le propriétaire du serveur, vous pouvez le désactivez dans votre ficher <code>server.cfg</code>.",
-            "deny_title": "Vous n'êtes pas sur la whitelist pour rejoindre ce serveur.",
-            "request_id_label": "ID de requête"
-        }
+        "reject_temporary": "Vous avez été banni de ce serveur.\nVotre bannissement expirera dans: %{expiration}.\nBan ID: %{id}.\nRaison du Ban: %{reason}.\nBanni par: %{author}.",
+        "reject_permanent": "Vous avez été définitivement banni de ce serveur.\nBan ID: %{id}.\nRaison du Ban: %{reason}.\nBanni par: %{author}."
     },
     "server_actions": {
         "restarting": "Le serveur redémarre (%{reason}).",
@@ -61,6 +25,10 @@
         "stopping": "Fermeture du serveur (%{reason}).",
         "stopping_discord": "**%{servername}** est en train de fermer (%{reason}).",
         "spawning_discord": "**%{servername}** est en train de démarrer."
+    },
+    "discord": {
+        "status_online": "**%{servername}** est actuellement **Ouvert** !",
+        "status_offline": "**%{servername}** est actuellement **Fermé** !"
     },
     "nui_warning": {
         "title": "AVERTISSEMENT",
@@ -70,14 +38,12 @@
     "nui_menu": {
         "misc": {
             "help_message": "Menu txAdmin activé, ecrivez /tx pour l'ouvrir.\nVous pouvez aussi configurer une touche [Paramètre du Jeu > Configuration des touches > FiveM > Menu: Open Main Page].",
-            "menu_not_admin": "Votre identifiant ne coïncide avec aucun identifiant d'un administrateur sur txAdmin.\nSi vous êtes enregistré(e) sur txAdmin, allez dans Admin Manager et assurez-vous que votre identifiant est bien enregistré.",
-            "menu_auth_failed": "txAdmin Menu authentication failed with reason: %{reason}",
+            "menu_not_allowed": "Votre identifiant ne coïncide avec aucun identifiant d'un administrateur sur txAdmin.\nSi vous êtes enregistré(e) sur txAdmin, allez dans Admin Manager et assurez-vous que votre identifiant est bien enregistré.",
             "no_perms": "Vous n'avez pas les permissions suffisantes.",
             "unknown_error": "Une erreur inconnue s'est produite.",
             "not_enabled": "Le Menu txAdmin n'est pas activé ! Vous pouvez l'activer dans les paramètres de txAdmin.",
             "announcement_title": "Annonce serveur par %{author}:",
-            "dialog_empty_input": "Vous ne pouvez pas avoir un champ vide.",
-            "directmessage_title": "Message d'un administrateur : %{author}:"
+            "dialog_empty_input": "Vous ne pouvez pas avoir un champ vide."
         },
         "frozen": {
             "froze_player": "Vous avez gelé le joueur !",
@@ -106,11 +72,6 @@
                     "title": "Invincible",
                     "label": "Devenez invincible",
                     "success": "Invincibilité activée"
-                },
-                "superjump": {
-                    "title": "Super Jump",
-                    "label": "Basculer sur le mode super saut, le joueur courra également plus vite",
-                    "success": "Super Jump activé"
                 },
                 "normal": {
                     "title": "Normal",
@@ -144,7 +105,7 @@
                 }
             },
             "vehicle": {
-                "title": "Véhicule",
+                "title": "Vehicule",
                 "onesync_error": "Cette option nécessite que OneSync soit activé pour la gestion des entités du serveur",
                 "not_in_veh_error": "Vous n'êtes pas dans un véhicule !",
                 "spawn": {
@@ -165,14 +126,6 @@
                     "title": "Supprimer",
                     "label": "Supprimez le véhicule",
                     "success": "Véhicule supprimé !"
-                },
-                "boost": {
-                    "title": "Boost",
-                    "label": "Boostez la voiture pour obtenir un maximum de fun (et peut-être de vitesse).",
-                    "success": "Véhicule boosté !",
-                    "already_boosted": "Ce véhicule est déjà boosté.",
-                    "unsupported_class": "Cette classe de véhicule n'est pas supportée.",
-                    "redm_not_mounted": "You can only boost when mounted on a horse."
                 }
             },
             "heal": {
@@ -194,22 +147,31 @@
             "announcement": {
                 "title": "Faire une annonce",
                 "label": "Faire une annonce pour tous les joueurs actuellement connectés.",
-                "dialog_desc": "Entrez le message que vous souhaitez diffuser à tous les joueurs..",
+                "dialog_desc": "Enter the message you want to broadcast to all players.",
                 "dialog_placeholder": "Message",
-                "dialog_success": "L'annonce est en train d'être envoyée."
+                "dialog_success": "L'annonce est en train d'être envoyé."
             },
             "clear_area": {
                 "title": "Nettoyer la zone",
-                "label": "Remettre une zone du monde spécifiée à son état par défaut.",
+                "label": "Reset a specified world area to its default state",
                 "dialog_desc": "Entrez un rayon où vous souhaitez que les entités soient supprimées (0-300). Cela ne va pas supprimer les entités créées par le serveur.",
                 "dialog_success": "Suppression des entités dans un rayon de %{radius} m",
                 "dialog_error": "Rayon invalide. Veuillez réessayer."
             },
             "player_ids": {
                 "title": "Afficher les ID des joueurs",
-                "label": "Afficher les identifiants des joueurs (et d'autres informations) au-dessus de la tête de tous les joueurs proches.",
-                "alert_show": "Les ID des joueurs sont affichés.",
-                "alert_hide": "Les ID des joueurs ne sont plus affichés."
+                "above_head": {
+                    "name": "Over Head IDs",
+                    "label": "Toggle showing player IDs (and other info) above the head of all nearby players",
+                    "alert_show": "Les ID des joueurs sont affichés.",
+                    "alert_hide": "Les ID des joueurs ne sont plus affichés."
+                },
+                "map_blips": {
+                    "name": "Blips on map",
+                    "label": "Toggle players blips on map as well as their NetIDs.",
+                    "alert_show": "Showing players blips on map.",
+                    "alert_hide": "Hiding players blips on map."
+                }
             }
         },
         "page_players": {
@@ -229,7 +191,7 @@
                 "farthest": "Le + loin"
             },
             "card": {
-                "health": "Santé : %{percentHealth}%"
+                "health": "Vie: %{percentHealth}%"
             }
         },
         "player_modal": {
@@ -289,8 +251,7 @@
                         "bring_player": "Le joueur a été téléporté à vous",
                         "spectate_failed": "Impossible de trouver le joueur ! Désactivation du mode surveillance.",
                         "spectate_yourself": "Vous ne pouvez pas vous surveiller vous-même.",
-                        "freeze_yourself": "Vous ne pouvez pas vous geler vous-même.",
-                        "spectate_cycle_failed": "Il n'y a pas de joueurs vers lesquels faire du vélo."
+                        "freeze_yourself": "Vous ne pouvez pas vous geler vous-même."
                     }
                 },
                 "troll": {
@@ -307,28 +268,18 @@
                 "session_time": "Durée de la session",
                 "play_time": "Temps de jeu",
                 "joined": "Connecté le ",
-                "whitelisted_label": "whitelisté",
-                "whitelisted_notyet": "pas encore",
-                "btn_wl_add": "AJOUTER WL",
-                "btn_wl_remove": "RETIRER WL",
-                "btn_wl_success": "Status de la whitelist changée.",
-                "log_label": "Log",
-                "log_empty": "Aucune sanction trouvée.",
-                "log_ban_count": "%{smart_count} ban |||| %{smart_count} bans",
-                "log_warn_count": "%{smart_count} warn |||| %{smart_count} warns",
-                "log_btn": "DÉTAILS",
-                "notes_changed": "Note du joueur changée.",
-                "notes_placeholder": "Notes à propos de ce joueur..."
+                "notes_placeholder": "Notes à propos du joueur"
             },
             "history": {
                 "title": "Historique",
-                "btn_revoke": "RÉVOQUER",
-                "revoked_success": "Action révoquée !",
-                "banned_by": "BANNI par %{author}",
-                "warned_by": "WARN par %{author}",
-                "revoked_by": "Révoqué par %{author}.",
-                "expired_at": "Expiré le %{date}.",
-                "expires_at": "Expire le %{date}."
+                "action_types": {
+                    "warn": "a AVERTI",
+                    "warn_revoked": "a REVOQUÉ l'AVERTISSEMENT de",
+                    "ban": "a BANNI",
+                    "ban_revoked": "a REVOQUÉ le BANNISEMENT de",
+                    "whitelist": "a AUTORISÉ (WL)",
+                    "whitelist_revoked": "a RETIRÉ de la LISTE BLANCHE pour"
+                }
             },
             "ban": {
                 "title": "Bannir le joueur",
@@ -341,14 +292,7 @@
                 "permanent": "Permanente",
                 "custom": "Personnalisée",
                 "helper_text": "Selectionnez une durée",
-                "submit": "Bannir",
-                "reason_required": "Vous devez inclure une raison de sanction.",
-                "success": "Joueur banni."
-            },
-            "ids": {
-                "current_ids": "Identifiants actuels",
-                "previous_ids": "Précedents identifiants",
-                "all_hwids": "All Hardware IDs"
+                "submit": "Apply ban"
             }
         }
     }

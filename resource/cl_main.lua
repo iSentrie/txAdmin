@@ -106,6 +106,8 @@ CreateThread(function()
         '/txAdmin:menu:noClipToggle',
         '/txAdmin:menu:openPlayersPage',
         '/txAdmin:menu:togglePlayerIDs',
+        '/txAdmin:menu:endSpectate',
+        '/txAdmin:menu:togglePlayerMapBlips',
 
         --Convars
         '/txAdmin-version',
